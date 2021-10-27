@@ -1,0 +1,40 @@
+* {
+  font-style: italic;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: inherit;
+}
+.container {
+  height: 100%;
+  max-width: 80%;
+  margin: auto;
+  width: 100%;
+  background-color: rgb(89, 183, 214);
+  color: black;
+}
+ul {
+  list-style: none;
+  display: flex;
+  list-style-position: outside;
+  cursor: pointer;
+}
+button {
+  background-color: gainsboro;
+  color: maroon;
+  margin-right: 20px;
+}
+.button:hover {
+  display: flex;
+  cursor: pointer;
+  background-color: rgb(70, 70, 165);
+}
+.progress-bar,
+.progress {
+  height: 15px !important;
+}
+.first {
+  display: inline-flex;
+  margin-right: 60%;
+}
+h5 {
+  display: inline-flex;
+}

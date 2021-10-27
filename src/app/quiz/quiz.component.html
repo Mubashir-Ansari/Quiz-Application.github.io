@@ -1,0 +1,57 @@
+<div class="container" style="height: 650px">
+  <mat-progress-bar
+    mode="determinate"
+    value="{{ (count / this.max) * 100 }}"
+    style="height: 6%; width: 100%"
+  ></mat-progress-bar>
+  <div
+    id="questions"
+    *ngIf="questions.length > 0 && count < questions.length; else elseBlock"
+  >
+    <h3 class="text-center">
+      Question {{ count + 1 }} of {{ questions.length }}
+    </h3>
+    <br />
+    <div class="container p-4 button">
+      <button (click)="Checkdifficult('easy')">Easy</button>
+      <button (click)="Checkdifficult('medium')">Medium</button>
+      <button (click)="Checkdifficult('hard')">Difficult</button>
+    </div>
+    <div class="container">
+      <br />
+      <h6>{{ questions[count].category }}</h6>
+
+      <h3>{{ questions[count].question }}</h3>
+      <br />
+      <ul class="option container">
+        <li
+          class="container text-center p-1"
+          *ngFor="let options of questions[count].incorrect_answers"
+        >
+          <button
+            (click)="verify_answer(questions[count].correct_answer, options)"
+          >
+            {{ options }}
+          </button>
+        </li>
+      </ul>
+      <br />
+    </div>
+    <br />
+    <h5 class="text-center first">Current: {{ score | number: "1.2-2" }}%</h5>
+    <h5 class="text-center">Max Score: {{ maxscore | number: "1.2-2" }}%</h5>
+  </div>
+  <mat-progress-bar
+    mode="determinate"
+    value="{{ score | number: '1.1' }}"
+    style="height: 5%; width: 100%; border-radius: 30px"
+  ></mat-progress-bar>
+
+  <ng-template #elseBlock>
+    <h2 class="text-center">Your Score: {{ score | number: "1.2-2" }}%</h2>
+    <button class="text-center" (click)="start()">Play Again</button>
+    <br />
+    <h5 class="text-center first">Current: {{ score | number: "1.2-2" }}%</h5>
+    <h5 class="text-center">Max Score: {{ maxscore | number: "1.2-2" }}%</h5>
+  </ng-template>
+</div>
